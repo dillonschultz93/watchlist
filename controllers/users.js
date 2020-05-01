@@ -28,6 +28,12 @@ module.exports = {
 		const token = signToken(newUser);
 		res.status(200).json({ token });
 	},
-	signIn: async (req, res, next) => {},
-	secret: async (req, res, next) => {},
+	signIn: async (req, res, next) => {
+		const token = signToken(req.user);
+		res.status(200).json({ token });
+	},
+	secret: async (req, res, next) => {
+		console.log('I managed to get here');
+		res.json({ secret: 'resource' });
+	},
 };
